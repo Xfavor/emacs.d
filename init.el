@@ -8,7 +8,8 @@
 
 ;; Produce backtraces when errors occur
 (setq debeug-on-error t)
-
+;; waypplayer
+;; Wappalyzer
 (let ((minver "24.4"))
   (when (version< emacs-version minver)
     (error "Your Emacs is too old -- this config requires v%s or higher" minver)))

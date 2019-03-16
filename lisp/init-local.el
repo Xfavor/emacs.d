@@ -8,4 +8,53 @@
   (find-file "~/.emacs.d/init.el"))
 (global-set-key (kbd "<f1>") 'open-my-init-file)
 
+(defun open-my-local-file()
+  (interactive)
+  (find-file "~/.emacs.d/lisp/init-local.el"))
+(global-set-key (kbd "<f2>") 'open-my-local-file)
+
+
+;; config simplified navtree
+;;(require 'nav)
+;;(nav-disable-overeager-window-splitting)
+;; Optional: set up a quick key to toggle nav
+;;(global-set-key [f8] 'nav-toggle)
+
+;; config neotree
+(require 'neotree)
+(global-set-key [f8] 'neotree)
+
+(setq neo-smart-open t)
+
+;; config bar to line
+(setq-default cursor-type 'bar)
+
+
+(defadvice show-paren-function (around fix-show-paren-function activate)
+  (cond ((looking-at-p "\\s(") ad-dolist)
+        (t (save-excursion
+             (ignore-errors (backward-up-list))
+             ad-do-it)))
+  )
+
+;; highlight show match parents
+;; (add-hook 'emacs-lisp-mode-hook 'show-paren-mode)
+
+(require 'meghanada)
+(add-hook 'java-mode-hook
+          (lambda ()
+            ;; meghanada-mode on
+            (meghanada-mode t)
+            (flycheck-mode +1)
+            (setq c-basic-offset 2)
+            ;; use code format
+            (add-hook 'before-save-hook 'meghanada-code-beautify-before-save)))
+(cond
+ ((eq system-type 'windows-nt)
+  (setq meghanada-java-path (expand-file-name "bin/java.exe" (getenv "JAVA_HOME")))
+  (setq meghanada-maven-path "mvn.cmd"))
+ (t
+  (setq meghanada-java-path "java")
+  (setq meghanada-maven-path "mvn")))
+
 (provide 'init-local)
