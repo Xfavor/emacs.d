@@ -7,7 +7,7 @@
 ;;; Code:
 
 ;; Produce backtraces when errors occur
-(setq debug-on-error t)
+(setq debeug-on-error t)
 
 (let ((minver "24.4"))
   (when (version< emacs-version minver)
@@ -34,7 +34,7 @@
 ;; Bootstrap config
 ;;----------------------------------------------------------------------------
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
-(require 'init-utils)
+(require 'init-utils)     ;; Elisp 帮助功能和编写的额外内置命令
 (require 'init-site-lisp) ;; Must come before elpa, as it may provide package.el
 ;; Calls (package-initialize)
 (require 'init-elpa)      ;; Machinery for installing required packages
@@ -43,7 +43,7 @@
 ;;----------------------------------------------------------------------------
 ;; Allow users to provide an optional "init-preload-local.el"
 ;;----------------------------------------------------------------------------
-(require 'init-preload-local nil t)
+(require 'init-preload-local)
 
 ;;----------------------------------------------------------------------------
 ;; Load configs for specific features and modes
@@ -174,8 +174,7 @@
 ;;----------------------------------------------------------------------------
 ;; Allow users to provide an optional "init-local" containing personal settings
 ;;----------------------------------------------------------------------------
-(require 'init-local nil t)
-
+(require 'init-local)
 
 
 (provide 'init)
