@@ -14,20 +14,11 @@
 (global-set-key (kbd "<f2>") 'open-my-local-file)
 
 
-;; config simplified navtree
-;;(require 'nav)
-;;(nav-disable-overeager-window-splitting)
-;; Optional: set up a quick key to toggle nav
-;;(global-set-key [f8] 'nav-toggle)
-
 ;; config neotree
 (require 'neotree)
 (global-set-key [f8] 'neotree)
 
 (setq neo-smart-open t)
-
-;; config bar to line
-(setq-default cursor-type 'bar)
 
 
 (defadvice show-paren-function (around fix-show-paren-function activate)
@@ -36,9 +27,6 @@
              (ignore-errors (backward-up-list))
              ad-do-it)))
   )
-
-;; highlight show match parents
-;; (add-hook 'emacs-lisp-mode-hook 'show-paren-mode)
 
 (require 'meghanada)
 (add-hook 'java-mode-hook
