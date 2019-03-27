@@ -45,4 +45,11 @@
   (setq meghanada-java-path "java")
   (setq meghanada-maven-path "mvn")))
 
+(setq org-latex-pdf-process '("xelatex -interaction nonstopmode %f"
+                              "xelatex -interaction nonstopmode %f"
+                              ))
+(setq org-latex-default-packages-alist
+      (remove '("AUTO" "inputenc" t) org-latex-default-packages-alist))
+
+
 (provide 'init-local)

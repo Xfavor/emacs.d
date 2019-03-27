@@ -93,7 +93,7 @@
 
 
 (require-package 'disable-mouse)
-
+;; (global-disable-mouse-mode)
 
 (provide 'init-gui-frames)
 ;;; init-gui-frames.el ends here
