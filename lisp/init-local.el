@@ -52,5 +52,6 @@
 ;;(setq org-latex-default-packages-alist      (remove '("AUTO" "inputenc" t) org-latex-default-packages-alist))
 
 
+(load "org-mind-map.el")
 
 (provide 'init-local)
