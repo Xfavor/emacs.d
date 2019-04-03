@@ -24,6 +24,7 @@ in the approximate order of how much I use them, from most to least:
 * Common Lisp (with Slime)
 * PHP
 * Erlang
+* Java
 
 In particular, there's a nice config for *autocompletion* with
 [company](https://company-mode.github.io/), and
