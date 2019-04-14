@@ -1,0 +1,412 @@
+init.el 读取完整的配置
+commentary  评论，或者称为描述
+bootstraps  引导
+backtraces  回朔
+
+<C-h v>  查询变量
+<C-h f>  查询函数
+<C-h k>  查询绑定按键
+
+toggle  切换
+
+add-to-list 由宏生成
+
+canonicalize  规范化
+second arg  第二个参数
+slash  斜线
+tilde  波浪号
+
+collapsed into  陷入
+traverse  遍历
+
+1. init-benchmarking：测量启动所需时间
+问题：如何在当前buffer下进入这个文件
+基础：<C-x C-f> 按目录找
+进阶：
+
+2. init-utils  Elisp 帮助功能和命令
+with-eval-after-load 在加载完一个文件后执行命令
+defalias  定义别名
+docstring  文档字符串
+declate  是一个lisp宏，
+dolist  是一个lisp宏，遍历list
+
+handier way 便捷方式
+utilities  公用事业
+
+3. init-site-lisp	支持人工安装 elisp 在 site-lisp 目录,即包来源非 melpa
+grabe  抓取
+upstream libs  上层库
+
+4. init-elpa  配置并帮助包管理，有些个性化设置，不太懂
+fire up  启动
+fullframe  是一个 lisp 宏，
+truncation  截断
+fullframe包 能够生成自动执行命令的单独窗口
+
+5. init-exec-path  设置可执行路径帮助Emacs找到程序
+exec-path-from-shell包能定位$PATH$
+
+6.init-preload-local  允许用户提供一个可选的提前读取配置
+我用来放置主题，
+
+--------读取特定配置和模式
+diminish包是提供一个 diminished mode 微模式。在下端用来显示其他微模式。略懵
+prepend  预置
+scratch包 是一个交互自动读取的 lisp 方法，用于生成一个草稿缓冲区
+command-log-mode包 是一个交互式自动读取的 lisp 方法，用于切换键盘命令日志记录
+
+7. init-frame-hooks 为 GUI / TTY 框架创建 提供特定的钩子
+add-hoos 是一个被编译的 lisp 方法，提供添加到 hook 函数的值
+
+8. init-xterm 集成了象 xterm 的终端,
+绑定快捷键，使得可滑动鼠标滚轮进行上下移动
+autoload 是一个内置方法，顶一个一个函数自动加载进文件
+mwheel-install 是一个被编译的 lisp 方法，启用鼠标滚轮支持
+
+9. init-themes 配置默认主题
+两个配色方案
+light  sanityinc-tomorrow-day
+dark  sanityinc-tomorrow-bright
+
+10. init-psx-keys 配置 MacOS 的具体键位设置
+
+*11. init-gui-frames 非TTY界面的具体行为，在所有图形界面切换后显示bar
+dialog 会话
+inhibit 抑制
+tool-bar-mode 是一个被编译的交互式 lisp 方法！！这些还没有概念、没有图象经历的过程
+ommit 省略
+set-scroll-bar-mode 是一个被编译的 lisp 方法，当有个值启用滚轮模式
+menu-bar-mode 是一个被编译的交互式 lisp 方法
+opacity 不透明度
+increment 增量
+car 获取 list 第一个值
+cdr 获取 list 除第一个剩下的值
+<M-C 8>更透明
+<M-C 9>更实在
+<M-C 7>默认
+default-text-scale包 提供便捷调节 Emacs 界面字体的方式
+ <C-M =>增大字体
+ <C-M ->减小字体
+ <C-M 0>默认字体
+disable-mouse包 提供不使用鼠标的形式（放一只锚？？？）
+(global-disable-mouse-mode)
+
+
+12. init-dired 定制 Dired 模式
+g-prefixed g前缀
+coreutils 
+utilities 公用事业
+diredfl包，提供额外的字体锁定规则，更多丰富多彩的 dired
+<C-c C-q>进入编辑模式
+diff-hl包，diff-hl-mode 突出显示窗口左侧未提交的修改，允许您在其中跳转并选择性地还原它们。可以鱼其他VC后端一起工作：Git、Mercurial、Bazaar、SVN
+
+*13. init-isearch 搜索配置
+anzu包提供类似Vim的搜索模式，可以用正则表达式进行当前搜索，全局搜索
+使得在搜索模式进行删除操作，不会返回当前查找到的内容而是正确删除。
+对于具体的搜索功能不太清楚！！！
+
+13. init-grep 提供 grep 或者类似 grep 工具的配置
+wgrep包 允许你编辑 grep buffer。
+See https://github.com/mhayashi1120/Emacs-wgrep
+还不懂 grep、ag、rg
+
+14. init-uniquify 配置给 buffer 唯一性的名称
+uniquification 唯一性
+更好地为同名文件缓冲区命名
+identical 完全相同的
+
+15. init-ibuffer 提供交互式的查看最近文件的列表
+增强 ibuffer 字体列表
+fullframe包 生成自动执行的单个 frame
+<C-x C-b>启动 ibuffer
+
+16. init-flycheck 配置全局的 flycheck 行为
+flycheck包 提供 GNU Emacs 的动态语法检查
+flycheck-color-mode-line包 给 flychek包提供 minor-mode，为当前 buffer 模式行着色
+
+17. init-recentf 配置跟踪最近文件
+最大文件数为1000
+
+18. init-smex 用 smex 增强 <M-x> 功能
+
+*19. init-ivy 提供微缓冲区补充
+ivy包，提供一个 Emacs 通用的微缓冲区补全机制
+Counsel包，提供一个增强版的 ivy
+Swiper包，一个增强版的 ivy 的替代物
+diminish包，提供便捷减少模式，快速唤起
+flx包，提供使用 defsubst 而不是 defun，对垃圾回收GC优化，长久未更新了
+projectile包，提供 Emacs 的项目交互库，不引入外部依赖提高查找项目的性能
+
+
+#20. init-haml 提供 haml 模板支持，适合web开发
+haml-mode包 提供一个 Emacs 的 major 模式用于简化模板操作如 html 配对标签
+提供语法高亮显示和语法感知缩进，语法检查基于内置的 flycheck
+
+21. init-hippie-expand 配置 hippie-expand
+hippie-expand 是一个交互式自动加载的 lisp 方法，尝试多种方法在点之前展开文本？？
+
+*22. init-company 与 company 协作完成
+company包，提供完成候选对象的后端，用于显示他们模块的前端。许多后端分散在不同文件，可以单独使用
+company-quickhelp包，在等待补全时，秒开补全
+page-break-lines-mode 当补全菜单激活时，挂起分页换行模式
+
+23. init-windows 在 frame 中使用 window
+require-package 是一个 lisp闭包，安装指定的包
+<C-c left>、<C-c right>导航窗口布局
+switch-window包，提供 Emacs 窗口切换工具，提供可视化的方式对窗口进行切换、删除、分割和其他操作
+[f7] 下方分割，显示最近文件
+
+24. init-sessions 保存和重启编辑器会话在重启前
+advice-add 是一个被编译的 lisp 方法，准确添加 macro、alias、comand
+sesson包，提供启动 emacs 时恢复各种变量，还提供最近修改/访问过的文件并恢复位置
+
+25. init-mmm 支持多个主模式
+
+**26. init-editing-utils 日常编辑助手
+unfill包，自制，选择可编辑字符串
+fbundp 是一个内置变量，如果不为空则为 t
+vlf 包，提供一个 Emacs minor 模式，允许批量查看、编辑、搜索、比较文件大小，并根据处理器时间交还内存。批处理大小可随时调整，并限制用于文件操作的内存。可同时访问大型文件（如：TB），而无需交还和降低性能
+mode-line-ring包，自制，启动全局 minor 模式，响铃变为短暂闪烁
+maybe-require-package 是一个 lisp闭包，尝试去安装一个包，失败则报错
+closure 闭包
+
+
+27. init-whitespace 空白区域的特殊处理
+whitespace-cleanup-mode包，提供一个 minor 模式，在保存当前缓冲区之前，保证缓冲区的空白最初是干净的。简单说，清楚任何地方的空白。
+
+28. init-vc 支持版本控制
+diff-hl包，提供 diff-hl-mode 突出显示窗口，允许大块选择(鼠标也可以)将它们还原。
+browse-at-remote包，从 Emacs 轻松打开 github/gitlab(bitback)上的目标页面。
+
+29. init-darcs 支持 Darcs DVCS()
+darcsum包，提供显示缓冲区修改后的文件，不懂
+vc-darcs包，提供高级版本控制，不太懂
+
+*30. init-git 支持 git SCM 版本控制
+git-blamed包，提供 minor 模式为了增强 git-blame 在打开文件时，buffer 提示文件来源，$git blame:会逐行显示文件，并在每一行的行首显示commit号,提交者,最早的提交日期
+gitignore-mode包，提供 major 模式为了编辑 .gitignore 文件
+gitconfig-mode包，提供 major 模式为了编辑 .gitconfig 文件
+git-timemachine包，提供 用 git-timemachine 去浏览一个文件的历史版本
+magit包，提供一个 interface 去控制系统的 git
+fullframe包，提供生成自动执行的单窗口
+<C-x v t>切换 git timemachine
+<C-x g>打开 magit 状态
+magit-todos包，提供显示源代码注释和组织文件中关键字条目在 magit 状态缓冲区中。激活一个项目会跳到它的文件中
+git-commit包，提供帮助用户编写更良好的 git 提交消息。
+
+31. init-github github 整合
+yagist包，提供 gist.github.com的另一个 Emacs 集成
+git-clone包，提供自动将 repo 克隆到指定目录，并且对本地 repo 添加一个以 github 用户命名的远程 fork
+forge包，与 git forges 合作，以更舒适的方式进行修改
+
+32. init-projectile 通过 projectile 在项目中进行浏览
+projectile包，提供在项目中进行浏览
+ibuffer-projectile包，提供为 ibuffer 添加功能，一遍按其投射物对缓冲区进行分组根目录
+
+33. init-compile 提供 <M-x> 编译的帮助
+alert包，提供界面、选择的样式，用途是让用户可自由定义
+set-default 是一个特殊形式，提供将变量默认值设为XXX
+compile 是一个交互式自动加载被编译的 lisp 方法，提供编译包含当前缓冲区的程序。
+[f6]——重新编译
+cmd-to-echo包，提供显示Emacs Echo 区域中长时间运行的命令的输出。
+
+#34.init-crontab 与 crontab 一起工作
+crontab-mode包，提供 crontab(5)文件的 major 模式
+
+35. inti-textile 编辑 Textile markup
+textile-mode包，提供一种形式，如果有几种样式，每个类型中只有一个高亮
+
+36. init-markdown 支持 markdown
+markdown-mode包，提供 major 模式来编辑 .md 格式的文件，
+
+37. init-csv 支持 csv 文件
+csv-mode包（不在melpa），提供支持查看 .csv 格式文件
+
+38. init-erlang 支持 Erlang 语言
+erlang包，提供一个 major 模式来编辑 erlang 格式文件
+
+39. init-javascript 支持 javascript 及其衍生工具
+json-mode包，提供 扩展内置 js 模式的语法高亮
+js2-mode包，提供很多对 js 文件的支持
+coffee-mode包，提供语法高亮显示、缩进支持、IMENU支持、编译为 JavaScript、repl、菜单栏和一些可爱的命令。
+typescript-mode包，将原始的 javascript 模式 修改为 typescript 模式，提供句法高亮、自动缩进和填充评论。
+prettier-js包，在文件保存时，使用 prettier 格式化 javascript 代码。
+js-comint包，提供 Emacs comint 模式，允许运行 兼容 js 的解释器。
+<C-x C-e>js 送到最后的 sexp
+<C-cb>js 送到buffer
+skewer-mode包，提供在 web 浏览器中提供 javascript、CSS 和 Html 的实时交互。
+add-node-modules-path包，提供搜索当前文件父目录的 node_modules/.bin 并将其添加到缓冲区本地 exec path路径，这允许 Emacs 查找基于项目的安装 例如 esli
+
+
+40. init-php 支持 PHP 编程
+php-mode包，提供一个 major 模式用于编辑 PHP 格式的文件，这是一个 C 模式的扩展。还包括了方便的IDE特性文档搜索、源、类浏览器
+smarty-mode包，用于高亮智能地显示代码而忽略 html 模板
+
+*41. init-org Org-mode 配置
+org-cliplink包，提供一个简单的命令，将在剪切板的url插入org时自动超链接目标网页标题。
+<C-c l> org-store-link
+<C-c a> org-agenda
+stuff 资料
+re-align 重新对齐
+writeroom-mode包，提供一个 minor 模式，用于无干扰的写作模式
+
+42. init-nxml 支持以 NXML 编辑 XML
+nxml:
+
+43. init-html 支持编辑 HTML
+tagedit包，提供
+
+44. init-css 支持编辑 css
+rainbow-mode包，提供彩色的css的文字
+mmm-mode包，
+sass-mode包，
+less-css-mode包，
+skewer-mode包，
+css-eldoc包，
+
+45. init-haml 支持 Haml 模板
+Haml:
+haml-mode包，
+<C-o> 打开行
+
+46. init-http 用 HTTP APIs 方式工作
+httprepl包，
+restclient包，
+
+47. init-python 编辑 python
+pip-requirements包，提供
+anaconda-mode包，提供
+
+48. init-haskell 支持 Haskell 语言
+haskell-mode包，提供
+intero包，提供
+hindent包，提供
+dhall-mode包，提供
+elm-test-runner包，提供
+
+49. init-elm 支持 Elm 语言
+elm-mode包，提供
+flycheck-elm包，提供
+
+50. init-purescript 支持 purescript 语言
+purescript-mode包，提供
+psc-ide包，提供
+psci包，提供
+
+51. init-ruby 支持 ruby 语言
+ruby-hash-syntax包，提供
+rspec-mode包，提供
+inf-ruby包，提供
+ruby-compilation包，提供
+robe包，提供
+yari包，提供
+goto-gem包，提供
+bundler包，提供
+mmm-mode包，提供
+
+
+52. init-rails 支持 Ruby on Rails 
+projectile-rails包，提供
+
+53. init-sql 支持 SQL
+<C-c C-z>
+sqlformat包，提供
+
+
+54. init-rust 支持 Rust 语言
+rust-mode包，提供
+racer包，提供
+flycheck-rust，提供
+
+55. init-toml 支持 TOML 文件
+tomal-mode包，提供
+
+56. init-yaml 支持 Yaml 文件
+yaml-mode包，提供
+
+57. init-docker 用 docker 及其工具来工作
+docker包，提供
+dockerfile-mode包，提供
+docker-compose-mode包，提供
+docker-compose-mode包，提供
+
+58. init-terraform 用 Terraform 配置来工作
+terraform-mode
+company-terraform包，提供
+
+#59. init-nix
+
+nginx-mode包，提供
+
+60. init-paredit 配置 paredit 结构化编辑，便于在写lisp时括号匹配
+parddit包，提供
+paredit-everywhere包，提供
+
+*61. init-lisp Elisp 配置，并且为其他lisp配置
+elisp-slime-nav包，提供
+# Happy hacking, Emacs/Vim ♥  you
+immortal-scratch包，提供
+aggressive-indent包，提供
+derived包，提供
+cl-lib-highlight包，提供
+macrostep包，提供
+raubbow-mode包，提供
+highlight-quoted包，提供
+flychek包，提供
+cl-libify包，提供
+cask-mode包，提供
+
+62. init-slime slime 支持 Common Lisp
+slime包，提供
+hippie-expand-slime包，提供
+slime-company包，提供
+
+
+63. init-clojure 支持 Clojure 语言
+clojure-mode包，提供
+cljsbuild-mode包，提供
+elein包，提供
+
+64. init-clojure-cider cider 支持 clojure
+cider包，提供
+flychecj-clojure包，提供
+
+65. init-common-lisp 支持 Common lisp
+<C-c l>查看lisp文档
+
+66. init-spelling 拼写检查配置
+ispell包，提供
+
+67. init-misc 其他配置
+miscellaneous 其他的
+info-colors包，提供
+regex-tool包，提供
+<C-c C-k>退出reb
+
+68. init-folding 支持代码和区域折叠
+origami包，提供
+<C-c f>递归地切换结点
+<C-c F>切换所有结点
+
+69. init-dash 与 Mac 程序 Dash 继承
+<C-c D> dash at point
+
+70. init-ledger 支持 ledger CLI 会计工具
+ledger-mode包，提供
+flychek-ledger包，提供
+<RET>新行
+<C-o>打开一行
+
+
+gnuplot包，提供
+lua-mode包，提供
+htmlize包，提供
+dsvn包，提供
+
+uptimes包，提供
+
+71. init-locales 这个配置先于这个文件
+
+72. init-local 允许用户进行个人配置
+
