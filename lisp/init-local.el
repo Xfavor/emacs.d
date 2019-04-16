@@ -55,11 +55,27 @@
 ;;; Support org-mind-map, but here is a bug, I suggest that turn on org-mind-map when you want to use.
 ;;(load "org-mind-map.el")
 
+;;; Support to load python templates
+(add-hook 'find-file-hooks 'maybe-load-template)
+(defun maybe-load-template ()
+  (interactive)
+  (when (and
+         (string-match "\\.py$" (buffer-file-name))
+         (eq 1 (point-max)))
+    (insert-file "~/.emacs.d/templates/template.py")
+    (goto-char (point-max))
+    (insert (concat "# @Time    : " (current-time-string)"\n\n"))
+    ))
 
-;;; Support org to wordpress
 
+;; 应该是在lsp配置文件中写，创建py文件，
+;; 首先加载template.py文件之后再读取系统时间，
+;; 添加到template.py文件末尾，最后显示在新建文件中
 
-;;; Support
+(defun inser-current-time ()
+  "Insert the current itme"
+  (interactive "*")
+  (insert (current-time-string)))
 
 
 (provide 'init-local)
