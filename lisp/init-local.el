@@ -14,6 +14,12 @@
   (find-file "~/.emacs.d/lisp/init-local.el"))
 (global-set-key (kbd "<f2>") 'open-my-local-file)
 
+;;; press F2 come back here.
+(defun open-my-org()
+  (interactive)
+  (find-file "~/org/principle.org"))
+(global-set-key (kbd "<f12>") 'open-my-org)
+
 
 ;;; config neotree
 (require 'neotree)
@@ -67,15 +73,17 @@
     (insert (concat "# @Time    : " (current-time-string)"\n\n"))
     ))
 
+;;; 多行注释
+;; 1. 选中一段区域到最后一行行首（！很重要！）；
+;; 2. 按 C-x r t ；
+;; 3. 输入注释内容；
 
-;; 应该是在lsp配置文件中写，创建py文件，
-;; 首先加载template.py文件之后再读取系统时间，
-;; 添加到template.py文件末尾，最后显示在新建文件中
+;;; 反多行注释：
+;; 1. 选中一段区域到最后一行，紧挨着注释字符之后的位置（！很重要！）；
+;; 2. 按 c-x r k；
 
-(defun inser-current-time ()
-  "Insert the current itme"
-  (interactive "*")
-  (insert (current-time-string)))
-
+ ;; 快捷键放大/缩小字体
+(global-set-key (kbd "<M-mouse-4>") 'text-scale-increase)
+(global-set-key (kbd "<M-mouse-5>") 'text-scale-decrease)
 
 (provide 'init-local)
